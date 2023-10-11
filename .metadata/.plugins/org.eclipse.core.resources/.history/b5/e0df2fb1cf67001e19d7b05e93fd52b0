@@ -1,0 +1,9 @@
+package com.codingdojo.daikichiroutes;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class DaikichiController {
+	@RequestMapping
+	
+}
