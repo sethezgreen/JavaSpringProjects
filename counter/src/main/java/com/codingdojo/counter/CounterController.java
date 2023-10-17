@@ -7,16 +7,25 @@ import jakarta.servlet.http.HttpSession;
 
 @Controller
 public class CounterController {
-	@RequestMapping("/counter")
+	@RequestMapping("/")
 	public String index(HttpSession session) {
+		
+		Integer count = 0;
+		
 		if (session.getAttribute("count") == null) {
 			session.setAttribute("count", 0);
 		}
 		else {
-			 session.setAttribute("count", 1);
-//			 (session.getAttribute("count")) + 1
+			count = (Integer) session.getAttribute("count");
+			count ++;
+			session.setAttribute("count", count);
 			
 		}
 		return "index.jsp";
+	}
+	
+	@RequestMapping("/counter")
+	public String counter() {
+		return "counter.jsp";
 	}
 }
