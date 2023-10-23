@@ -26,22 +26,22 @@ public class Burger {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull
-	@Size(min = 5, max = 200)
+	@NotNull(message = "Must not be blank")
+	@Size(min = 5, max = 200, message = "Must be between 5 and 200 characters")
 	private String burgerName;
 	
-	@NotNull
-	@Size(min = 5, max = 200)
+	@NotNull(message = "Must not be blank")
+	@Size(min = 5, max = 200, message = "Must be between 5 and 200 characters")
 	private String restaurantName;
 	
-	@NotNull
-	@Min(1)
-	@Max(5)
+	@NotNull(message = "Must be between 1 and 5")
+	@Min(value = 1, message = "Must be between 1 and 5")
+	@Max(value = 5, message = "Must be between 1 and 5")
 	private Integer rating;
 	
-	@NotNull
+	@NotNull(message="Must not be blank")
+	@Size(min = 5, max = 200, message = "Must be between 5 and 200 characters")
 	private String Notes;
-	// may want to change the variable type
 	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
