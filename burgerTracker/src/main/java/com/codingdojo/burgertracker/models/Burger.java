@@ -41,7 +41,7 @@ public class Burger {
 	
 	@NotNull(message="Must not be blank")
 	@Size(min = 5, max = 200, message = "Must be between 5 and 200 characters")
-	private String Notes;
+	private String notes;
 	
 	@Column(updatable=false)
     @DateTimeFormat(pattern="yyyy-MM-dd")
@@ -53,15 +53,18 @@ public class Burger {
 	// Constructors
 	public Burger() {
 	}
-
-	public Burger(@NotNull @Size(min = 5, max = 200) String burgerName,
-			@NotNull @Size(min = 5, max = 200) String restaurantName, @NotNull @Min(0) @Max(5) Integer rating) {
+	
+	public Burger(
+			@NotNull(message = "Must not be blank") @Size(min = 5, max = 200, message = "Must be between 5 and 200 characters") String burgerName,
+			@NotNull(message = "Must not be blank") @Size(min = 5, max = 200, message = "Must be between 5 and 200 characters") String restaurantName,
+			@NotNull(message = "Must be between 1 and 5") @Min(value = 1, message = "Must be between 1 and 5") @Max(value = 5, message = "Must be between 1 and 5") Integer rating,
+			@NotNull(message = "Must not be blank") @Size(min = 5, max = 200, message = "Must be between 5 and 200 characters") String notes) {
 		this.burgerName = burgerName;
 		this.restaurantName = restaurantName;
 		this.rating = rating;
+		this.notes = notes;
 	}
 
-	
 	// Getters and Setters
 	public Long getId() {
 		return id;
@@ -112,11 +115,11 @@ public class Burger {
 	}
 	
 	public String getNotes() {
-		return Notes;
+		return notes;
 	}
 
 	public void setNotes(String notes) {
-		Notes = notes;
+		this.notes = notes;
 	}
 
 	// Created at and Updated at
