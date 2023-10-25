@@ -41,6 +41,7 @@
 	</table>
 	
 	<h2>Add an Expense:</h2>
+<div class="form">
 	<form:form action="/expenses" method="post" modelAttribute="expense">
 		<p>
 			<form:label path="expenseName">Expense Name</form:label>
@@ -64,5 +65,6 @@
 		</p>
 		<input type="submit" value="Submit"/>
 	</form:form>
+</div>
 </body>
 </html>
