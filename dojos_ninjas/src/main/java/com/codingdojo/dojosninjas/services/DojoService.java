@@ -1,6 +1,7 @@
 package com.codingdojo.dojosninjas.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,11 @@ public class DojoService {
 	// creates a dojo
 	public Dojo createDojo(Dojo dojo) {
 		return dojoRepo.save(dojo);
+	}
+	
+	// gets one dojo
+	public Dojo getDojo(Long id) {
+		Optional<Dojo> optionalDojo = dojoRepo.findById(id);
+		return optionalDojo.isPresent() ? optionalDojo.get() : null;
 	}
 }
