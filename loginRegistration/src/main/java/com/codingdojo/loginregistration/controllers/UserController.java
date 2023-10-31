@@ -46,8 +46,6 @@ public class UserController {
     public String register(@Valid @ModelAttribute("registerUser") User registerUser, 
             BindingResult result, Model model) {
         
-        // TO-DO Later -- call a register method in the service 
-        // to do some extra validations and create a new user!
 		User registeredUserOrNull = userService.validateRegistration(registerUser, result);
 		
 		if (registeredUserOrNull == null) {
@@ -55,28 +53,25 @@ public class UserController {
 			return "loginReg.jsp";
 		}
         
-        // Save the ID of the new user in session
+        // Save the Id of the new user in session
 		session.setAttribute("userId", registeredUserOrNull.getId());
     
         return "redirect:/dashboard";
     }
     
     @PostMapping("/login")
-    public String login(@Valid @ModelAttribute("newLogin") LoginUser newLogin, 
+    public String login(@Valid @ModelAttribute("loginUser") LoginUser loginUser, 
             BindingResult result, Model model, HttpSession session) {
         
-        // Add once service is implemented:
-        // User user = userServ.login(newLogin, result);
-    
-        if(result.hasErrors()) {
-            model.addAttribute("newUser", new User());
-            return "loginReg.jsp";
+        User loggedUserOrNull = userService.validateLogin(loginUser, result);
+        if (loggedUserOrNull == null) {
+        	model.addAttribute("registerUser", new User());
+        	return "loginReg.jsp";
         }
-    
-        // No errors! 
-        // TO-DO Later: Store their ID from the DB in session, 
-        // in other words, log them in.
-    
+        
+        // Save the Id of the new user in session
+        session.setAttribute("userId", loggedUserOrNull.getId());
+        
         return "redirect:/dashboard";
     }
     

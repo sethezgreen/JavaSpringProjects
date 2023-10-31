@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
+import com.codingdojo.loginregistration.models.LoginUser;
 import com.codingdojo.loginregistration.models.User;
 import com.codingdojo.loginregistration.repositories.UserRepository;
 
@@ -22,6 +23,12 @@ public class UserService {
 			result.rejectValue("password", "passwordsDisagree.regiesterUser.password", "Passwords must match");
 		}
 		
+		// Check if the email is taken
+		Optional<User> possibleUser = userRepo.findByEmail(registerUser.getEmail());
+		if (possibleUser.isPresent()) {
+			result.rejectValue("email", "emailTaken.registerUser.email", "Email is already being used.");
+		}
+		
 		// Check validations
 		if (result.hasErrors()) {
 			return null;
@@ -32,8 +39,26 @@ public class UserService {
 		return userRepo.save(registerUser);
 	}
 	
-	public User validateLogin() {
-		return null;
+	public User validateLogin(LoginUser loginUser, BindingResult result) {
+		// attempt to find a user with given email
+		Optional<User> possibleUser = userRepo.findByEmail(loginUser.getEmail());
+		if (possibleUser.isEmpty()) {
+			result.rejectValue("email", "invalidCredentials.loginUser.email", "Invalid login");
+			return null;
+		}
+		
+		// checking password
+		User thisUser = possibleUser.get();
+		if (!BCrypt.checkpw(loginUser.getPassword(), thisUser.getPassword())) {
+			result.rejectValue("email", "invalidCredentials.loginUser.email", "Invalid login");
+			return null;
+		}
+		
+		// checking for errors
+		if (result.hasErrors()) {
+			return null;
+		}
+		return thisUser;
 	}
 	
 	// Gets user by id

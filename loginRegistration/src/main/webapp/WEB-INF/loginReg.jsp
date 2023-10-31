@@ -18,42 +18,61 @@
     <script type="text/javascript" src="/js/app.js"></script>
 </head>
 <body>
-   <h1>Welcome!</h1>
-   <h2>Register</h2>
-   <form:form action="/register" method="post" modelAttribute="registerUser">
-   		
-   		<form:label path="userName">User Name</form:label>
-   		<form:errors path="userName"/>
-   		<form:input path="userName"/>
-   		
-   		<form:label path="email">Email</form:label>
-   		<form:errors path="email"/>
-   		<form:input  path="email" type="email"/>
-   		
-   		<form:label path="password">Password</form:label>
-   		<form:errors path="password"/>
-   		<form:password path="password"/>
-   		
-   		<form:label path="confirmedPassword">Confirm Password</form:label>
-   		<form:errors path="confirmedPassword"/>
-   		<form:password path="confirmedPassword"/>
-   		
-   		<input type="submit" value="Register"/>
-   </form:form>
-   
-   <h2>Login</h2>
-   <form:form action="/login" method="post" modelAttribute="loginUser">
-   		
-   		<form:label path="email">Email</form:label>
-   		<form:errors path="email"/>
-   		<form:input  path="email" type="email"/>
-   		
-   		<form:label path="password">Password</form:label>
-   		<form:errors path="password"/>
-   		<form:password path="password"/>
-   		
-   		<input type="submit" value="Login" />
-   </form:form>
+	<div class="container">
+	   <h1>Welcome!</h1>
+	   <div class="main-content">
+	   		<div>
+			   <h2>Register</h2>
+			   <form:form action="/register" method="post" modelAttribute="registerUser" class="form">
+			   		
+			   		<form:label path="userName">User Name:</form:label>
+			   		<div class="errors">
+				   		<form:input path="userName"/>
+				   		<form:errors path="userName"/>
+			   		</div>
+			   		
+			   		<form:label path="email">Email:</form:label>
+					<div class="errors">
+				   		<form:input  path="email" type="email"/>
+				   		<form:errors path="email"/>					
+					</div>
+			   		
+			   		<form:label path="password">Password:</form:label>
+				   	<div class="errors">
+				   		<form:password path="password"/>
+				   		<form:errors path="password"/>				   	
+				   	</div>
+			   		
+			   		<form:label path="confirmedPassword">Confirm Password:</form:label>
+			   		<div class="errors">
+				   		<form:password path="confirmedPassword"/>
+				   		<form:errors path="confirmedPassword"/>			   		
+			   		</div>
+			   		
+			   		<input type="submit" value="Register"/>
+			   </form:form>
+	   		</div>
+		   <div>
+			   <h2>Login</h2>
+			   <form:form action="/login" method="post" modelAttribute="loginUser" class="form">
+			   		
+			   		<form:label path="email">Email:</form:label>
+			   		<div class="errors">
+				   		<form:input  path="email" type="email"/>
+				   		<form:errors path="email"/>			   		
+			   		</div>
+			   		
+			   		<form:label path="password">Password:</form:label>
+			   		<div class="errors">
+				   		<form:password path="password"/>
+				   		<form:errors path="password"/>			   		
+			   		</div>
+			   		
+			   		<input type="submit" value="Login" />
+			   </form:form>
+		   </div>
+	   </div>
+	</div>
 </body>
 </html>
 
