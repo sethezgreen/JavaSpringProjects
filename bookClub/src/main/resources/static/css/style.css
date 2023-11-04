@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+.container {
+	padding: 15px;
+}
+
+.top-nav {
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-content {
+	display: flex;
+	justify-content: space-around;
+	margin: 5px;
+}
+
+.form {
+	margin: 5px;
+	padding: 5px 10px;
+}
+
+label {
+	display: block;
+	margin-top: 5px;
+}
+
+input {
+	display: block;
+	margin: 0 5px 5px 0;
+}
+
+.errors {
+	display: flex;
+	color: red;
+}
