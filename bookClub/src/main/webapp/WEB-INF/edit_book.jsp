@@ -33,7 +33,7 @@
 		<form:errors path="author"/>
 		
 		<form:label path="thoughts">My Thoughts:</form:label>
-		<form:input path="thoughts"/>
+		<form:textarea path="thoughts"/>
 		<form:errors path="thoughts"/>
 		
 		<input type="submit" value="update"/>

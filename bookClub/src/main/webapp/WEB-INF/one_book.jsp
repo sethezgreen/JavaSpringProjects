@@ -29,6 +29,10 @@
 	<form action="/books/edit/${book.id}" method="post">
 		<input type="submit" value="edit" />
 	</form>
+	<form action="/books/${book.id}" method="post">
+		<input type="hidden" name="_method" value="delete" />
+		<input type="submit" value="delete" />
+	</form>
 </c:if>
 </body>
 </html>

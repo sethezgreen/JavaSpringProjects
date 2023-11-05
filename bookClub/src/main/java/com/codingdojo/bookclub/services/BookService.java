@@ -45,4 +45,9 @@ public class BookService {
 		book.setUser(userService.getUserById((Long) session.getAttribute("userId")));
 		return bookRepo.save(book);
 	}
+	
+	// deletes a book
+	public void deleteBook(Long id) {
+		bookRepo.deleteById(id);
+	}
 }
