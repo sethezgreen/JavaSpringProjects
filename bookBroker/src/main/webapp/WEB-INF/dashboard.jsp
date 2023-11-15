@@ -28,8 +28,8 @@
 	<div class="top-nav">
 		<p>Book's from everyone's shelves:</p>
 		<div>
-			<a href="/books/new">Add a book to my shelf!</a>
-			<a href="/books/market">Book Lender Dashboard</a>
+			<a href="/books/new" class="display-block">Add a book to my shelf!</a>
+			<a href="/books/market" class="display-block">Book Lender Dashboard</a>
 		</div>
 	</div>
 	<table class="table table-striped">

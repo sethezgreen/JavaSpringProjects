@@ -45,11 +45,11 @@
 					<td><c:out value="${oneBook.author}"></c:out></td>
 					<td><c:out value="${oneBook.user.name}"></c:out></td>
 					<td>
-						<c:if test = "${book.user.id == userId }">
-							<form action="/books/edit/${book.id}" method="post">
+						<c:if test = "${oneBook.user.id == userId }">
+							<form action="/books/edit/${oneBook.id}" method="post">
 								<input type="submit" value="edit" />
 							</form>
-							<form action="/books/${book.id}" method="post">
+							<form action="/books/${oneBook.id}" method="post">
 								<input type="hidden" name="_method" value="delete" />
 								<input type="submit" value="delete" />
 							</form>
