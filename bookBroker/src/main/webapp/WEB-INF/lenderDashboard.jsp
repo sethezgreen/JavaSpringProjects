@@ -45,7 +45,8 @@
 					<td><c:out value="${oneBook.author}"></c:out></td>
 					<td><c:out value="${oneBook.user.name}"></c:out></td>
 					<td>
-						<c:if test = "${oneBook.user.id == userId }">
+						<c:choose>
+						<c:when test = "${oneBook.user.id == userId }">
 							<form action="/books/edit/${oneBook.id}" method="post">
 								<input type="submit" value="edit" />
 							</form>
@@ -53,13 +54,40 @@
 								<input type="hidden" name="_method" value="delete" />
 								<input type="submit" value="delete" />
 							</form>
-						</c:if>
+						</c:when>
+						<c:when test = "${oneBook.user.id != userId }">
+							<a href="/books/borrow/${oneBook.id}">borrow</a>
+						</c:when>
+						</c:choose>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	
 	<p>Books I'm Borrowing..</p>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Author</th>
+				<th>Owner</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="oneBook" items="${books}">
+				<tr>
+					<td><c:out value="${oneBook.id}"></c:out></td>
+					<td><a href="/books/${oneBook.id}"><c:out value="${oneBook.title}"></c:out></a></td>
+					<td><c:out value="${oneBook.author}"></c:out></td>
+					<td><c:out value="${oneBook.user.name}"></c:out></td>
+					<td><a href="/books/return/${oneBook.id}">return</a></td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </div>
 </body>
 </html>

@@ -91,6 +91,18 @@ public class BookController {
 		}
 	}
 	
+	@PutMapping("/books/borrow/{id}")
+	public String addBorrower(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
+		// need to add logic
+		return "redirect:/books/market";
+	}
+			
+	@PutMapping("/books/return/{id}")
+	public String removeBorrower(@Valid @ModelAttribute("book") Book book, BindingResult result, Model model) {
+		// need to add logic
+		return "redirect:/books/market";
+	}
+	
 	@DeleteMapping("books/{id}")
 	public String destroy(@PathVariable("id") Long id) {
 		if (this.checkLoginStatus() == null) {return "redirect:/";}
